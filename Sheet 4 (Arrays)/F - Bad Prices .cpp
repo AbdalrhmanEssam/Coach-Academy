@@ -1,25 +1,20 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-
-int main()
-{
-    long long int n, t, v, arr[150009]={0};
+int main() {
+    int arr[150001];
+    int n;
+    int t;
     cin>>t;
-    while(t--)
-    {
-        int sum=0;
-        cin>>n;
-        for(int i=0;i<n;i++)
-        {
-            cin>>arr[i];
+    while(t--) {
+        cin >> n;
+        for (int i = 0; i < n; ++i)
+            cin >> arr[i];
+        int ans = 0, mn = arr[n - 1];
+        for (int i = n - 2; i >= 0; --i) {
+            if (mn < arr[i])
+                ++ans;
+            else mn = arr[i];
         }
-        v = arr[n-1];
-        for(int i=(n-2); i>=0; i--)
-        {
-            if(v < arr[i])sum++;
-            else v = arr[i];
-        }
-        cout<<sum<<'\n';
+        cout << ans << '\n';
     }
-    return 0;
 }
